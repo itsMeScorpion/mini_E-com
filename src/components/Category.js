@@ -3,7 +3,14 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { setCategory, addCategory } from '../action';
+import {
+  setCategory,
+  addCategory,
+  addSubCategory,
+  setsuccessmessage,
+  seterrormessage,
+} from '../action';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Forms = styled(Form)`
   margin-top: 50px;
@@ -19,11 +26,12 @@ const Category = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     if (val.length === 0) {
-      alert('Enter a category');
+      dispatch(seterrormessage('Enter a category'));
     } else if (addedproducts.filter((value) => value.name === val).length > 0) {
-      alert('category already exists');
+      dispatch(seterrormessage('category already exists'));
     } else {
       dispatch(addCategory({ name: val }));
+      dispatch(setsuccessmessage('Category added succesfully'));
     }
   };
   return (
@@ -33,7 +41,7 @@ const Category = () => {
           <Form.Label>Enter Category</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter product name"
+            placeholder="Enter Category"
             onChange={(e) => setval(e.target.value)}
           />
         </Form.Group>

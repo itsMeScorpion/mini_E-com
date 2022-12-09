@@ -7,6 +7,9 @@ const initialState = {
   addedsubcategory: [],
   addedvariant: [],
   addsubvariant: [],
+  setsuccessmessage: null,
+  setresetsuccessmessage: null,
+  seterrormessage: null,
 };
 const oauthReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -41,6 +44,21 @@ const oauthReducer = (state = initialState, action) => {
       return {
         ...state,
         addsubvariant: action.payload,
+      };
+    case 'SET_SUCCESS_MESSAGE':
+      return {
+        ...state,
+        setsuccessmessage: action.payload,
+      };
+    case 'RESET_SUCCESS_MESSAGE':
+      return {
+        ...state,
+        setresetsuccessmessage: action.payload,
+      };
+    case 'SET_ERROR_MESSAGE':
+      return {
+        ...state,
+        seterrormessage: action.payload,
       };
     default:
       return state;

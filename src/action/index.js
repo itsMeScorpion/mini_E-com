@@ -23,6 +23,8 @@ export const setCategory = () => async (dispatch) => {
 export const addCategory = (data) => async (dispatch) => {
   await Service.createProducts(data);
   dispatch(setCategory());
+  dispatch(setsuccessmessage());
+  dispatch(resetsuccessmessage());
 };
 
 export const DisplaySubCategory = () => async (dispatch) => {
@@ -63,3 +65,17 @@ export const addSubVariant = (data) => async (dispatch) => {
   await Service.CreateSubVariant(data);
   dispatch(DisplaySubVariant());
 };
+
+export const setsuccessmessage = (data) => ({
+  type: 'SET_SUCCESS_MESSAGE',
+  payload: data,
+});
+
+export const resetsuccessmessage = (data) => ({
+  type: 'RESET_SUCCESS_MESSAGE',
+  payload: data,
+});
+export const seterrormessage = (data) => ({
+  type: 'SET_ERROR_MESSAGE',
+  payload: data,
+});
