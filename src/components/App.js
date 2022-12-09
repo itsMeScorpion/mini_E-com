@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { resetsuccessmessage, seterrormessage } from '../action';
 import Home from './Home';
 import Navbar from './Navbar';
+import Product from './Product';
 
 const toastConfig = {
   position: 'top-right',
@@ -47,6 +48,7 @@ function App() {
           <Route path="/SubCategory" component={SubCategory}></Route>
           <Route path="/Variant" component={Variant}></Route>
           <Route path="/SubVariant" component={SubVariant}></Route>
+          <Route path="/Product" component={Product}></Route>
         </Switch>
       ) : null}
     </BrowserRouter>

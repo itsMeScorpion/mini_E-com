@@ -38,7 +38,8 @@ const SubCategory = () => {
     );
   });
   return (
-    <div className="container" style={{ width: '50%' }}>
+    <div className="container mt-5  " style={{ width: '50%' }}>
+      <label>Category:-</label>
       <select onChange={(e) => setparent(e.target.value)}>
         <option>select</option>
         {subcat}

@@ -79,3 +79,20 @@ export const seterrormessage = (data) => ({
   type: 'SET_ERROR_MESSAGE',
   payload: data,
 });
+export const getCatogories = (data) => ({
+  type: 'GET_CATOGORIES',
+  payload: data,
+});
+
+export const DisplayProduct = () => async (dispatch) => {
+  const { data } = await Service.ListProductItem();
+  dispatch({
+    type: 'SET_PRODUCT',
+    payload: data,
+  });
+};
+
+export const addProduct = (data) => async (dispatch) => {
+  await Service.CreateProductItem(data);
+  dispatch(DisplayProduct());
+};

@@ -7,6 +7,7 @@ const initialState = {
   addedsubcategory: [],
   addedvariant: [],
   addsubvariant: [],
+  productItemDetails: [],
   setsuccessmessage: null,
   setresetsuccessmessage: null,
   seterrormessage: null,
@@ -59,6 +60,11 @@ const oauthReducer = (state = initialState, action) => {
       return {
         ...state,
         seterrormessage: action.payload,
+      };
+    case 'SET_PRODUCT':
+      return {
+        ...state,
+        productItemDetails: action.payload,
       };
     default:
       return state;

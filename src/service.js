@@ -22,4 +22,6 @@ export default {
   //Create
   CreateSubVariant: (data) => jsonserver.post('SubVariant', data),
   //   getPost: (id) => jsonserver.get(`posts/${id}`),
+  CreateProductItem: (data) => jsonserver.post('product', data),
+  ListProductItem: () => jsonserver.get('product'),
 };

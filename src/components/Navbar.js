@@ -17,7 +17,7 @@ const Links = styled(Link)`
 `;
 
 const Googlebutton = styled(Links)`
-  margin-right: 800px;
+  margin-right: 700px;
 `;
 const Header = () => {
   const { issignedin } = useSelector((state) => state.oauth);
@@ -41,11 +41,8 @@ const Header = () => {
     };
     gapi.load('client:auth2', initClient);
   }, []);
-
-  //   const [profile, setProfile] = useState([]);
   const clientId =
     '386932037035-k8v833noqjk7m4auae0t83vnkrqvvg3t.apps.googleusercontent.com';
-  //
 
   const onSuccess = (res) => {
     dispatch(issigned(res.googleId, res.profileObj.email));
@@ -60,8 +57,8 @@ const Header = () => {
   };
 
   return (
-    <div>
-      <Navbar bg="light" expand="lg">
+    <div className="bg-secondary" style={{ width: '100%' }}>
+      <Navbar bg="secondary">
         <Container fluid className="d-flex align-items-baseline">
           <Navbar.Brand href="#">SHOP</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -69,33 +66,19 @@ const Header = () => {
             {issignedin ? (
               <Nav
                 className="me-auto my-2 my-lg-0"
-                style={{ maxHeight: '100px' }}
+                style={{ maxHeight: '70px' }}
                 navbarScroll
               >
                 <Links to={`/Category`}>Category</Links>
                 <Links to={`/SubCategory`}>SubCategory</Links>
                 <Links to={`/Variant`}>Variant</Links>
-                <Googlebutton to={`/SubVariant`}>SubVariant</Googlebutton>
+                <Links to={`/SubVariant`}>SubVariant</Links>
+                <Googlebutton to={`Product`}>Product</Googlebutton>
                 <GoogleLogout
                   clientId={clientId}
                   buttonText="Log out"
                   onLogoutSuccess={logOut}
                 />
-                {/* <Nav.Link href=></Nav.Link> */}
-
-                {/* <NavDropdown title="Link" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">
-                  Something else here
-                </NavDropdown.Item>
-              </NavDropdown> */}
-                {/* <Nav.Link href="#" disabled>
-                Link
-              </Nav.Link> */}
               </Nav>
             ) : (
               <GoogleLogin
@@ -107,18 +90,7 @@ const Header = () => {
                 isSignedIn={true}
               />
             )}
-
-            {/* <Form className="d-flex">
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button variant="outline-success">Search</Button>
-            </Form> */}
           </Navbar.Collapse>
-          {/* <Google /> */}
         </Container>
       </Navbar>
     </div>

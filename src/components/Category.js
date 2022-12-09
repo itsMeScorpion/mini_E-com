@@ -21,6 +21,7 @@ const Category = () => {
   const [val, setval] = useState('');
   useEffect(() => {
     setCategory();
+    
   });
 
   const onSubmit = (e) => {
